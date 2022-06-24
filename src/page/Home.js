@@ -2,10 +2,17 @@ import Start from "../GazeRecoder/Start";
 import Stop from "../GazeRecoder/Stop"
 import HandleHeatMap from "../GazeRecoder/HandleHeatMap";
 import PlotGaze from "../GazeRecoder/PloGaze";
+import React from "react";
+import { Helmet } from "react-helmet"
+
 
 function Home() {
     return (
         <div className="aligncenter">
+            <Helmet>
+                <script src="https://api.gazerecorder.com/GazeCloudAPI.js">
+                </script>
+            </Helmet>
             <nav className="nav">
             <ul className="navul">
                 <li className = "navli"><a href="/" className="nava">Home</a></li>
