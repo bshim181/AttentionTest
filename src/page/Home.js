@@ -8,12 +8,14 @@ function Home() {
         <div className="aligncenter">
             <nav className="nav">
             <ul className="navul">
-                <a href="/">Home</a>
-                <a href="/attentionTest">Test</a>
+                <li className = "navli"><a href="/" className="nava">Home</a></li>
+                <li className="navli"><a href="/attentionTest" className="nava">Test</a></li>
+                <li className="navli"><a className="nava">Contact</a></li>
+                <li className="navli"><a className="nava">About</a></li>
             </ul>
             </nav>
             <header className='header'>Attention Test</header>
-            <button id = "startid" type = "button" className = 'btn' onClick = {Start}>Start</button>
+            <button id = "startid" type = "button" className = 'btn' onClick = {Start}>Take the test</button>
             <button id = "stopid" type = "button" className = 'btn' style = {{display:"none"}} onClick = {Stop}>Stop</button>
             <p className="container">
                 During this attention test, your pupil movements will be tracked and recorded. 
@@ -23,7 +25,7 @@ function Home() {
             <label><input type="checkbox" name="heatmap" value="true"></input>Show heat map</label>
             <hr className="line"></hr>
             <div className="Bottombody">
-                <a href="https://gazerecorder.com/">Link to GazeRecoder Website</a>
+                <a href="https://gazerecorder.com/" className="links">Link to GazeRecoder Website</a>
             </div>
         </div>
 
