@@ -16,7 +16,57 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
-    <script src=”https://api.gazerecorder.com/GazeCloudAPI.js”></script>
+    <script src='https://api.gazerecorder.com/GazeCloudAPI.js'></script>
+    <script type = "text/javascript">
+
+      function Start() {
+        document.getElementById("startid").style.display = 'none'
+        document.getElementById("stopid").style.display = 'flex'
+        document.getElementById("stopid").style.alignContent = 'center'
+        GazeCloudAPI.StartEyeTracking(); 
+      }
+
+      function Stop() {
+        document.getElementById("startid").style.display = 'block'
+        document.getElementById("stopid").style.display = 'none';
+        GazeCloudAPI.StopEyeTracking(); 
+      }
+
+      function plotGaze() {
+        document.getElementById("GazeData").innerHTML = "Gaze X:" + GazeData.GazeX + "GazeData Y:" + GazeData.GazeY; 
+        //document.getElementById("HeadPoseData").innerHTML
+        //document.getElementById("HeadRotaData").innerHTML 
+        if(!document.getElementById("ShowHeatMap").checked) {
+          //In case, where show heat map is checked off, we display the location of our pupil movement in a coordinate system. 
+          var x = GazeData.docX;
+          var y = GazeData.docY; 
+
+          var gaze = document.getElementById("gaze");
+          x -= gaze.clientWidth/2;
+          y -= gaze.clientHeight/2; 
+          gaze.style.left = x + "px"
+          gaze.style.top = y + "px"
+          if(GazeData.state != 0) {
+            gaze.stylee.display = 'none'; 
+          }
+          else {
+            gaze.style.dispaly = 'block'
+          }
+        }
+      }
+      function handleHeatMap() {
+        if(checkbox.checked) {
+          console.log("checkbox checked")
+          //ShowHeatMap();
+          //document.getElementById("gaze").style.display = 'none';
+        }
+        else {
+          console.log("checkbox unchecked")
+          //RemoveHeatMap(); 
+        } 
+      }
+
+    </script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
