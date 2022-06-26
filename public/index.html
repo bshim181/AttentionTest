@@ -57,14 +57,28 @@
       function handleHeatMap() {
         if(checkbox.checked) {
           console.log("checkbox checked")
-          //ShowHeatMap();
-          //document.getElementById("gaze").style.display = 'none';
+          ShowHeatMap();
+          document.getElementById("gaze").style.display = 'none';
         }
         else {
           console.log("checkbox unchecked")
-          //RemoveHeatMap(); 
+          RemoveHeatMap(); 
         } 
       }
+      window.addEventListener('load', function() {
+        GazeCloudAPI.OnCalibrationComplete = function() {
+          ShowHeatMap();
+          console.log('Gaze Calibration Complete')
+        }
+        GazeCloudAPI.OnCamDenied = function() {
+          console.log('Camera access denied')
+        }
+        GazeCloudAPI.OnError = function(msg) {
+          console.log('err ' + msg)
+        }
+        GazeCloudAPI.UseClickCalibration = true;
+        GazeCloudAPI.OnResult = plotGaze();
+      })
 
     </script>
     <!--
