@@ -17,8 +17,7 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
     <script src='https://api.gazerecorder.com/GazeCloudAPI.js'></script>
-    <script type = "text/javascript">
-
+    <script>
       function Start() {
         document.getElementById("startid").style.display = 'none'
         document.getElementById("stopid").style.display = 'flex'
@@ -32,11 +31,11 @@
         GazeCloudAPI.StopEyeTracking(); 
       }
 
-      function plotGaze() {
+      function plotGaze(GazeData) {
         document.getElementById("GazeData").innerHTML = "Gaze X:" + GazeData.GazeX + "GazeData Y:" + GazeData.GazeY; 
         //document.getElementById("HeadPoseData").innerHTML
         //document.getElementById("HeadRotaData").innerHTML 
-        if(!document.getElementById("ShowHeatMap").checked) {
+        if(!document.getElementById("heatMap").checked) {
           //In case, where show heat map is checked off, we display the location of our pupil movement in a coordinate system. 
           var x = GazeData.docX;
           var y = GazeData.docY; 
@@ -55,17 +54,17 @@
         }
       }
       function handleHeatMap() {
-        if(checkbox.checked) {
+        if(document.getElementsByName("heatMap").checked) {
           console.log("checkbox checked")
           ShowHeatMap();
           document.getElementById("gaze").style.display = 'none';
         }
         else {
           console.log("checkbox unchecked")
-          RemoveHeatMap(); 
+          //RemoveHeatMap(); 
         } 
       }
-      window.addEventListener('load', function() {
+      window.addEventListener('DOMContentLoaded', function() {
         GazeCloudAPI.OnCalibrationComplete = function() {
           ShowHeatMap();
           console.log('Gaze Calibration Complete')
@@ -77,7 +76,7 @@
           console.log('err ' + msg)
         }
         GazeCloudAPI.UseClickCalibration = true;
-        GazeCloudAPI.OnResult = plotGaze();
+        GazeCloudAPI.OnResult = plotGaze;
       })
 
     </script>

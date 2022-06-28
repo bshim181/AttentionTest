@@ -19,7 +19,7 @@ function Home() {
                 This information will help to evaluate your attention level and aid in diagnosing attention 
                 deficit hyperactivity disorder.  
             </p>
-            <label><input type="checkbox" name="heatmap" value="true"></input>Show heat map</label>
+            <label><input type="checkbox" name="heatmap" value="true" checked onClick = {window['handleHeatMap']}></input>Show heat map</label>
             <hr className="line"></hr>
             <div className="Bottombody">
                 <a href="https://gazerecorder.com/" className="links">Link to GazeRecoder Website</a>
