@@ -58,8 +58,8 @@ body {
   font-size: 50px;
 }
 .animContain {
-  width:400px;
-  height: 400px;
+  width: 600px;
+  height: 600px;
   position: relative;
   background: black;
 }
