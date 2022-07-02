@@ -13,13 +13,15 @@ function Home() {
             </nav>
             <header className='header'>Attention Test</header>
             <button id = "startid" type = "button" className = 'btn' onClick = {window['Start']}>Take the test</button>
+            <p id = "GazeData"></p>
+            <div id="gaze" className="gazeStyle"></div>
             <button id = "stopid" type = "button" className = 'btn' style = {{display:"none"}} onClick = {window['Stop']}>Stop</button>
             <p className="container">
                 During this attention test, your pupil movements will be tracked and recorded. 
                 This information will help to evaluate your attention level and aid in diagnosing attention 
                 deficit hyperactivity disorder.  
             </p>
-            <label><input type="checkbox" name="heatmap" value="true" checked onClick = {window['handleHeatMap']}></input>Show heat map</label>
+            <label><input type="checkbox" name="heatmap" value="true" onClick = {window['handleHeatMap']}></input>Show heat map</label>
             <hr className="line"></hr>
             <div className="Bottombody">
                 <a href="https://gazerecorder.com/" className="links">Link to GazeRecoder Website</a>
